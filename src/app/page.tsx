@@ -1,5 +1,5 @@
-import HeaderTitle from '@/components/HeaderTitle';
+import Header from '@/components/header/Header.Component';
 
 export default function Home() {
-	return <HeaderTitle />;
+	return <Header />;
 }
