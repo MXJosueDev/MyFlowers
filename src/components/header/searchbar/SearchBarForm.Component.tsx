@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-export default function SearchBar() {
+export default function SearchBarForm() {
 	const [searchContent, setSearchContent] = useState<string>('');
 
 	function submitHandler(event: any) {
@@ -12,15 +12,11 @@ export default function SearchBar() {
 	}
 
 	return (
-		<div className="bg-tertiary">
-			<form onSubmit={submitHandler}>
-				<input
-					onChange={event =>
-						setSearchContent(event.target.value ?? '')
-					}
-					type="text"
-				/>
-			</form>
-		</div>
+		<form onSubmit={submitHandler}>
+			<input
+				onChange={event => setSearchContent(event.target.value ?? '')}
+				type="text"
+			/>
+		</form>
 	);
 }

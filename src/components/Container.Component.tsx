@@ -1,8 +1,8 @@
-import { classNameProp, requiredChildrenProp } from '@/types/props';
+import { ClassNameProp, RequiredChildrenProp } from '@/types/Props';
 
-interface props extends classNameProp, requiredChildrenProp {}
+interface Props extends ClassNameProp, RequiredChildrenProp {}
 
-export default function Container(props: props) {
+export default function Container(props: Props) {
 	return (
 		<div
 			className={

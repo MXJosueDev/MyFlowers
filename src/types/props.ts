@@ -1,10 +1,10 @@
-import { DOMElements } from './types';
+import { DOMElements } from './Types';
 
-export interface classNameProp {
+export interface ClassNameProp {
 	className?: string;
 }
 
-export interface childrenProp {
+export interface ChildrenProp {
 	children?: DOMElements;
 }
 

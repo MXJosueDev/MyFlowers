@@ -1,8 +1,8 @@
-import { requiredChildrenProp, classNameProp } from '@/types/props';
+import { RequiredChildrenProp, ClassNameProp } from '@/types/Props';
 
-interface props extends classNameProp, requiredChildrenProp {}
+interface Props extends ClassNameProp, RequiredChildrenProp {}
 
-export default function ContainerFluid(props: props) {
+export default function ContainerFluid(props: Props) {
 	return (
 		<div
 			className={
