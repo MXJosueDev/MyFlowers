@@ -1,11 +1,17 @@
+import Container from '../Container.Component';
+import ContainerFluid from '../ContainerFluid.Component';
 import HeaderTitle from './HeaderTitle.Component';
+import SearchBar from './SearchBar.Component';
 
 export default function Header() {
 	return (
-		<header className='container-fluid'>
-			<div className='container'>
-				<HeaderTitle />
-			</div>
+		<header>
+			<ContainerFluid>
+				<Container>
+					<HeaderTitle />
+					<SearchBar />
+				</Container>
+			</ContainerFluid>
 		</header>
 	);
 }
