@@ -1,3 +1,5 @@
+const a = "";
+
 export default function HeaderTitle() {
 	return (
 		<div>
