@@ -9,6 +9,7 @@
 		"base-format": "prettier --write .",
 		"format": "pretty-quick",
 		"lint": "next lint",
+    "lint-staged": "next lint --file",
 		"prepare": "husky"
 	},
 	"dependencies": {
