@@ -1,0 +1,105 @@
+body {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* ANIMATIONS */
+
+.animation-blink {
+	animation-name: blink;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+
+	-webkit-animation-name: blink;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/* TOOLTIPS */
+
+.ctooltip {
+	position: relative;
+	display: inline-block;
+	// border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+.ctooltip .ctooltiptext {
+	z-index: 99999;
+	
+	visibility: hidden;
+	width: 120px;
+	background-color: var(--bs-emphasis-color);
+	color: var(--bs-body-bg);
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	
+	/* Position the tooltip text */
+	position: absolute;
+	z-index: 1;
+	bottom: 110%;
+	left: 50%;
+	margin-left: -60px;
+	
+	/* Fade in tooltip */
+	opacity: 0;
+	transition: opacity 0.3s;
+	
+	font-family: var(--bs-font-sans-serif);
+	font-size: 0.875rem;
+}
+
+.ctooltip .ctooltiptext::after {
+	z-index: 99999;
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: var(--bs-emphasis-color) transparent transparent transparent;
+}
+
+.ctooltip.ctooltip-hover:hover .ctooltiptext,
+.ctooltip .ctooltip.ctooltip-enabled {
+	visibility: visible;
+	opacity: 0.9;
+}

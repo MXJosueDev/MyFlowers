@@ -1,0 +1,39 @@
+@import '/src/styles/vars';
+
+.sidebarWrapper {
+	width: $sidebarSize;
+	max-width: 100vw;
+	height: 100vh;
+
+	position: fixed;
+	transform: translate(-$sidebarSize);
+	top: 0;
+	left: 0;
+
+	transition: $sidebarTransition;
+
+	background-color: var(--bs-white);
+}
+
+/* @media (width > 768px) {
+	.sidebarWrapper {
+		// transform: translate(0);
+	}
+} */
+
+.sidebarToggled {
+	transform: translate(0);
+}
+
+.sidebarContainer {
+	max-width: 100vw;
+	height: 100vh;
+}
+
+.sidebarOption i::before {
+	vertical-align: 0 !important;
+}
+
+.sidebarOptions {
+	max-height: calc(100vh - 75px);
+}

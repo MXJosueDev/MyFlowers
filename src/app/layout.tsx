@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import '@/styles/globals.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import BootstrapClient from '@/components/BootstrapClient.Component';
-
-const inter = Inter({ subsets: ['latin'] });
+import '@/styles/bootstrap.scss';
+import '@/styles/globals.scss';
+import './Layout.css';
+import BootstrapClient from '@/components/BootstrapClient';
 
 export const metadata: Metadata = {
 	title: process.env.NEXT_PUBLIC_APP_NAME,
@@ -17,9 +15,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>{children}</body>
-			<BootstrapClient />
+		<html lang='en' /* data-bs-theme='dark' */>
+			<body className={`bg-body`}>
+				<div id='root'>{children}</div>
+				<BootstrapClient />
+			</body>
 		</html>
 	);
 }

@@ -1,0 +1,28 @@
+$flowerCardImgSize: 160px;
+
+.flowerCard {
+	--bs-card-border-color: var(--bs-body-color);
+}
+
+.flowerCard:hover, .flowerCard:active {
+	cursor: pointer;
+	transform: scale(1.03);
+	transition: 0.25s;
+}
+
+.flowerCard img {
+	width: auto;
+	height: $flowerCardImgSize;
+}
+
+.flowerCard i {
+	font-size: 20px;
+}
+
+.vLine::before {
+	content: '';
+	height: 100%;
+	border-left: 1px solid;
+	border-color: inherit;
+	opacity: 0.25;
+}

@@ -1,3 +1,3 @@
-import { ReactElement } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
-export type DOMElements = ReactElement | ReactElement[];
+export type SetState<T> = Dispatch<SetStateAction<T>>;

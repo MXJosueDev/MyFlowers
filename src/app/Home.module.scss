@@ -1,0 +1,16 @@
+@import '/src/styles/vars';
+
+.wrapper {
+	transition: $sidebarTransition;
+}
+
+.sidebarToggled {
+	margin-left: $sidebarSize;
+	transition: $sidebarTransition;
+}
+
+@media (width < 930px) {
+	.sidebarToggled {
+		min-width: 100vw;
+	}
+}

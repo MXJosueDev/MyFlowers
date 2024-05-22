@@ -1,0 +1,59 @@
+$xsBgSize: 200px;
+$smBgSize: 350px;
+
+$iconSize: 125px;
+$submitSize: 50px;
+
+.container {
+	background-image: url('/image/auth.jpg');
+	background-repeat: no-repeat;
+	background-size: $xsBgSize;
+	background-position: left bottom;
+
+	padding-bottom: $xsBgSize;
+}
+
+@media (width > 576px) {
+	.container {
+		background-size: $smBgSize;
+
+		padding-bottom: calc($smBgSize / 2);
+	}
+}
+
+.authImage {
+	width: 100%;
+	height: auto;
+}
+
+.icon i {
+	font-size: $iconSize;
+}
+
+.form {
+	border-color: var(--bs-body-color) !important;
+}
+
+.submit {
+	width: $submitSize;
+	height: $submitSize;
+
+	font-size: 1.2rem;
+
+	background-color: var(--bs-body-color) !important;
+
+	--bs-btn-border-width: 0;
+}
+
+.formControl {
+	border-color: var(--bs-dark);
+}
+
+.formControl:focus {
+	border-color: var(--bs-dark);
+}
+
+.submit:hover,
+.submit:focus {
+	transform: translateY(-5px);
+}

@@ -1,15 +1,17 @@
+import { RequiredChildrenProp } from '@/types/Props';
 import Container from '../Container.Component';
 import ContainerFluid from '../ContainerFluid.Component';
-import HeaderTitle from './HeaderTitle.Component';
-import SearchBar from './searchbar/SearchBar.Component';
+import Row from '../Row.Component';
+import styles from './Header.module.scss';
 
-export default function Header() {
+interface Props extends RequiredChildrenProp {}
+
+export default function Header({ children }: Props) {
 	return (
 		<header>
-			<ContainerFluid>
+			<ContainerFluid className='bg-primary py-3'>
 				<Container>
-					<HeaderTitle />
-					<SearchBar />
+					<Row className={styles.headerRow}>{children}</Row>
 				</Container>
 			</ContainerFluid>
 		</header>

@@ -1,0 +1,25 @@
+$optionButtonSize: 60px;
+$optionSize: 25px;
+
+.img {
+	background-image: url('/image/homeTop.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.img > img {
+	width: 100%;
+	max-height: 300px;
+}
+
+.optionButton {
+	width: $optionButtonSize;
+	height: $optionButtonSize;
+
+	border-color: var(--bs-body-color) !important;
+}
+
+.optionButton i {
+	font-size: $optionSize;
+}
