@@ -62,7 +62,7 @@ body {
 
 .ctooltip .ctooltiptext {
 	z-index: 99999;
-	
+
 	visibility: hidden;
 	width: 120px;
 	background-color: var(--bs-emphasis-color);
@@ -70,18 +70,18 @@ body {
 	text-align: center;
 	padding: 5px 0;
 	border-radius: 6px;
-	
+
 	/* Position the tooltip text */
 	position: absolute;
 	z-index: 1;
 	bottom: 110%;
 	left: 50%;
 	margin-left: -60px;
-	
+
 	/* Fade in tooltip */
 	opacity: 0;
 	transition: opacity 0.3s;
-	
+
 	font-family: var(--bs-font-sans-serif);
 	font-size: 0.875rem;
 }

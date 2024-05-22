@@ -14,7 +14,9 @@ export default function ProductElements({
 	return (
 		<div className='mb-5'>
 			<h5 className='fs-2 d-3'>{elementTitle}</h5>
-			<div className={`mt-3 d-flex overflow-x-scroll gap-2 ${styles.productElements}`}>
+			<div
+				className={`mt-3 d-flex overflow-x-scroll gap-2 ${styles.productElements}`}
+			>
 				{productElements.flatMap(({ imageUrl, elementName }) => {
 					return (
 						<div className='flex-shrink-0' key={elementName}>

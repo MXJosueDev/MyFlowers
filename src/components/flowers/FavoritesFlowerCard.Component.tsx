@@ -34,7 +34,7 @@ export default function FavoritesFlowerCard({
 										{`$${price}`}
 									</p>
 
-									<AddFavoriteButton productId={productId}/>
+									<AddFavoriteButton productId={productId} />
 								</div>
 							</div>
 						</div>

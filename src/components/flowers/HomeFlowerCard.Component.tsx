@@ -22,7 +22,7 @@ export default function HomeFlowerCard({ productId, img, price }: Props) {
 						{`$${price}`}
 					</p>
 
-					<AddFavoriteButton productId={productId}/>
+					<AddFavoriteButton productId={productId} />
 				</div>
 			</div>
 		</div>

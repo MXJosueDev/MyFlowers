@@ -4,7 +4,8 @@ $flowerCardImgSize: 160px;
 	--bs-card-border-color: var(--bs-body-color);
 }
 
-.flowerCard:hover, .flowerCard:active {
+.flowerCard:hover,
+.flowerCard:active {
 	cursor: pointer;
 	transform: scale(1.03);
 	transition: 0.25s;
