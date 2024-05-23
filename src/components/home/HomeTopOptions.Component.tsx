@@ -5,7 +5,7 @@ export default function HomeTopOptions() {
 		<>
 			<HomeTopOption
 				optionName='Mas vendidos'
-				optionFeatureSearch='mas-vendidos'
+				optionFeatureSearch='masvendidos'
 				optionIcon='fire'
 			/>
 			<HomeTopOption
