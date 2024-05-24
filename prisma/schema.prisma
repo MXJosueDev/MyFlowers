@@ -34,7 +34,7 @@ model Decoration {
 model Product {
   id           Int          @id @default(autoincrement())
   price        Float
-  discount     Float        @default(-1) // USE -1 FOR NO DISCOUNT
+  discount     Float        @default(-1) // USE -1 FOR NO DISCOUNT, REMOVE DEFAULT
   category     Category     @relation(fields: [categoryName], references: [name])
   categoryName Categories
   promotion    String?
