@@ -44,7 +44,8 @@ export async function GET(request: NextRequest) {
 			{ error },
 			{
 				status: 500,
-				statusText: 'Ocurrio un error al intentar obtener la decoracion',
+				statusText:
+					'Ocurrio un error al intentar obtener la decoracion',
 			},
 		);
 	}
@@ -101,7 +102,8 @@ export async function POST(request: NextRequest) {
 			{ error },
 			{
 				status: 500,
-				statusText: 'Ocurrio un error al intentar registrar la decoracion',
+				statusText:
+					'Ocurrio un error al intentar registrar la decoracion',
 			},
 		);
 	}
@@ -163,7 +165,8 @@ export async function PATCH(request: NextRequest) {
 			{ error },
 			{
 				status: 500,
-				statusText: 'Ocurrio un error al intentar actualizar la decoracion',
+				statusText:
+					'Ocurrio un error al intentar actualizar la decoracion',
 			},
 		);
 	}
@@ -207,7 +210,8 @@ export async function DELETE(request: NextRequest) {
 			{ error },
 			{
 				status: 500,
-				statusText: 'Ocurrio un error al intentar actualizar la decoracion',
+				statusText:
+					'Ocurrio un error al intentar actualizar la decoracion',
 			},
 		);
 	}
