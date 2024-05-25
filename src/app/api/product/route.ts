@@ -1,5 +1,5 @@
 import { prisma } from '@/_lib/prisma';
-import { dataJsonDeserializer } from '@/utils/Utils';
+import { dataJsonDeserializer, isValidImageURL } from '@/utils/Utils';
 import { Categories, Features, Prisma } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
@@ -12,10 +12,10 @@ export async function GET(request: NextRequest) {
 	const jsonData = await dataJsonDeserializer(request, 'GET');
 
 	const parsedData = GetData.safeParse({
-		productId: jsonData.get('productId'),
+		productId: Number(jsonData.productId),
 	});
 
-	if (parsedData.error) {
+	if (!parsedData.success) {
 		return NextResponse.json(
 			{
 				error: parsedData.error,
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
 			},
 		});
 
-		return NextResponse.json(product, { status: 200 });
+		return NextResponse.json({ product }, { status: 200 });
 	} catch (error) {
 		return NextResponse.json(
 			{ error },
@@ -67,11 +67,12 @@ const PostData = z.object({
 
 export async function POST(request: NextRequest) {
 	const jsonData = await dataJsonDeserializer(request, 'POST');
+
 	const parsedData = PostData.safeParse({
 		...jsonData,
 	});
 
-	if (parsedData.error) {
+	if (!parsedData.success) {
 		return NextResponse.json(
 			{
 				error: parsedData.error,
@@ -91,6 +92,17 @@ export async function POST(request: NextRequest) {
 			{
 				status: 400,
 				statusText: 'El descuento no puede ser mayor que el precio',
+			},
+		);
+	}
+
+	if (!(await isValidImageURL(data.imageUrl))) {
+		return NextResponse.json(
+			{},
+			{
+				status: 400,
+				statusText:
+					'La URL de imagen que proporcionaste no es correcta',
 			},
 		);
 	}
@@ -119,9 +131,7 @@ export async function POST(request: NextRequest) {
 				discount: data.discount,
 				category: {
 					connect: {
-						name: Categories[
-							data.category as keyof typeof Categories
-						],
+						name: data.category as Categories,
 					},
 				},
 				promotion: data.promotion,
@@ -143,7 +153,7 @@ export async function POST(request: NextRequest) {
 			},
 		});
 
-		return NextResponse.json(product, { status: 200 });
+		return NextResponse.json({ product }, { status: 200 });
 	} catch (error) {
 		return NextResponse.json(
 			{ error },
@@ -170,6 +180,7 @@ const PatchData = z.object({
 
 export async function PATCH(request: NextRequest) {
 	const jsonData = await dataJsonDeserializer(request, 'POST');
+
 	const parsedData = PatchData.safeParse({
 		id: jsonData.productId,
 		...jsonData,
@@ -184,7 +195,7 @@ export async function PATCH(request: NextRequest) {
 		features: jsonData.features ?? undefined, */
 	});
 
-	if (parsedData.error) {
+	if (!parsedData.success) {
 		return NextResponse.json(
 			{
 				error: parsedData.error,
@@ -197,6 +208,17 @@ export async function PATCH(request: NextRequest) {
 	}
 
 	const data = parsedData.data;
+
+	if (data.imageUrl && !(await isValidImageURL(data.imageUrl))) {
+		return NextResponse.json(
+			{},
+			{
+				status: 400,
+				statusText:
+					'La URL de imagen que proporcionaste no es correcta',
+			},
+		);
+	}
 
 	const patchCategory: any = data.category
 		? { connect: { name: data.category } }
@@ -254,7 +276,52 @@ export async function PATCH(request: NextRequest) {
 			},
 		});
 
-		return NextResponse.json(product, { status: 200 });
+		return NextResponse.json({ product }, { status: 200 });
+	} catch (error) {
+		return NextResponse.json(
+			{ error },
+			{
+				status: 500,
+				statusText:
+					'Ocurrio un error al intentar actualizar el producto',
+			},
+		);
+	}
+}
+
+const DeleteData = z.object({
+	productId: z.number().min(1),
+});
+
+export async function DELETE(request: NextRequest) {
+	const jsonData = await dataJsonDeserializer(request, 'POST');
+
+	const parsedData = DeleteData.safeParse({
+		productId: jsonData.productId,
+	});
+
+	if (!parsedData.success) {
+		return NextResponse.json(
+			{
+				error: parsedData.error,
+			},
+			{
+				status: 400,
+				statusText: 'Los datos enviados no fueron correctos',
+			},
+		);
+	}
+
+	const data = parsedData.data;
+
+	try {
+		const product = await prisma.product.delete({
+			where: {
+				id: data.productId,
+			},
+		});
+
+		return NextResponse.json({ product }, { status: 200 });
 	} catch (error) {
 		return NextResponse.json(
 			{ error },

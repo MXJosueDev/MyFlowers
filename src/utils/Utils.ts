@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { NextRequest } from 'next/server';
 
 export function joinClassNames(
@@ -14,9 +15,19 @@ export async function dataJsonDeserializer(
 		if (method === 'POST') {
 			return await request.json();
 		} else {
-			return request.nextUrl.searchParams;
+			return Object.fromEntries(request.nextUrl.searchParams);
 		}
 	} catch {
 		return {};
+	}
+}
+
+export async function isValidImageURL(url: string): Promise<boolean> {
+	try {
+		const response = await axios.head(url);
+		const contentType = response.headers['content-type'];
+		return contentType && contentType.startsWith('image/');
+	} catch (error) {
+		return false;
 	}
 }
