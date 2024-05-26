@@ -5,17 +5,17 @@ export default function HomeTopOptions() {
 		<>
 			<HomeTopOption
 				optionName='Mas vendidos'
-				optionFeatureSearch='masvendidos'
+				optionFeatureSearch='MASVENDIDOS'
 				optionIcon='fire'
 			/>
 			<HomeTopOption
 				optionName='Ofertas'
-				optionFeatureSearch='ofertas'
+				optionFeatureSearch='OFERTAS'
 				optionIcon='star-fill'
 			/>
 			<HomeTopOption
 				optionName='Promociones'
-				optionFeatureSearch='promociones'
+				optionFeatureSearch='PROMOCIONES'
 				optionIcon='tags-fill'
 			/>
 		</>

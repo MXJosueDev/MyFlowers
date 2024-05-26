@@ -17,12 +17,12 @@ export default function ProductElements({
 			<div
 				className={`mt-3 d-flex overflow-x-scroll gap-2 ${styles.productElements}`}
 			>
-				{productElements.flatMap(({ imageUrl, elementName }) => {
+				{productElements.flatMap(({ imageUrl, name: elementName }) => {
 					return (
 						<div className='flex-shrink-0' key={elementName}>
 							<ProductElementCard
 								imageUrl={imageUrl}
-								elementName={elementName}
+								name={elementName}
 							/>
 						</div>
 					);

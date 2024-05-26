@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { NextRequest } from 'next/server';
 
+export const API_URI = '/api/';
+
 export function joinClassNames(
 	...classNames: Array<string | undefined>
 ): string {

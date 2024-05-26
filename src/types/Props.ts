@@ -44,5 +44,5 @@ export interface FormControlProps {
 
 export interface IProductElement {
 	imageUrl: string;
-	elementName: string;
+	name: string;
 }

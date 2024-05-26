@@ -4,7 +4,7 @@ import { Categories, Features, Prisma } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
-export const pageSize = 16;
+const pageSize = 16;
 
 const GetData = z.object({
 	page: z.number().min(1),
@@ -125,6 +125,7 @@ export async function GET(request: NextRequest) {
 			},
 			select: {
 				id: true,
+				categoryName: true,
 				imageUrl: true,
 				price: true,
 				discount: true,

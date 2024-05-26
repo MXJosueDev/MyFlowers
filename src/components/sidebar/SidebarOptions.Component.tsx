@@ -5,37 +5,37 @@ export default function SidebarOptions() {
 		<ul className='nav flex-column mt-3'>
 			<SidebarOption
 				optionName='Cumpleaños'
-				optionSearchCategory='cumpleanos'
+				optionSearchCategory='CUMPLEANOS'
 				optionIcon='cake-fill'
 			/>
 			<SidebarOption
 				optionName='Parejas'
-				optionSearchCategory='parejas'
+				optionSearchCategory='PAREJAS'
 				optionIcon='hearts'
 			/>
 			<SidebarOption
 				optionName='Condolencias'
-				optionSearchCategory='condolencias'
+				optionSearchCategory='CONDOLENCIAS'
 				optionIcon='emoji-tear-fill'
 			/>
 			<SidebarOption
 				optionName='Graduación'
-				optionSearchCategory='graduacion'
+				optionSearchCategory='GRADUACION'
 				optionIcon='mortarboard-fill'
 			/>
 			<SidebarOption
 				optionName='Detalles'
-				optionSearchCategory='detalles'
+				optionSearchCategory='DETALLES'
 				optionIcon='flower2'
 			/>
 			<SidebarOption
 				optionName='Bodas'
-				optionSearchCategory='bodas'
+				optionSearchCategory='BODAS'
 				optionIcon='person-hearts'
 			/>
 			<SidebarOption
 				optionName='Aniversarios'
-				optionSearchCategory='aniversarios'
+				optionSearchCategory='ANIVERSARIOS'
 				optionIcon='stars'
 			/>
 		</ul>

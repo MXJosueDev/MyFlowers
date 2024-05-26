@@ -1,7 +1,5 @@
-import HomeFlowerCard from '@/components/flowers/HomeFlowerCard.Component';
-import FlowersContainer, {
-	BREAKPOINTS,
-} from '@/components/flowers/FlowersContainer.Component';
+import FlowersContainer from '@/components/flowers/FlowersContainer.Component';
+import Footer from '@/components/footer/Footer.Component';
 import BackHeader from '@/components/header/BackHeader.Component';
 import { Metadata } from 'next';
 
@@ -12,7 +10,12 @@ export const metadata: Metadata = {
 interface SearchParams {
 	productId?: string;
 	category?: string;
-	feature?: string;
+	features?: string;
+	minPrice?: string;
+	maxPrice?: string;
+	promotion?: string;
+	flowers?: string;
+	decorations?: string;
 }
 
 interface Props {
@@ -24,15 +27,15 @@ export default function Products({ searchParams }: Props) {
 		<div className='min-vh-100'>
 			<BackHeader title='Productos' />
 			<div id='content' className={`mt-5 mb-3`}>
-				{JSON.stringify(searchParams)} {/* DEBUGGIN */}
-				{searchParams.productId &&
-					`Se busca un producto con el ID: ${searchParams.productId}`}
 				<FlowersContainer
-					flowers={[]}
-					flowerCard={HomeFlowerCard}
-					breakpoints={BREAKPOINTS.HOME}
+					fetchParams={{
+						...searchParams,
+					}}
+					cardStyle='HOME'
+					breakpoints='HOME'
 				/>
 			</div>
+			<Footer />
 		</div>
 	);
 }

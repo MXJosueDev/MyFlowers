@@ -124,6 +124,14 @@ export async function POST(request: NextRequest) {
 		},
 	);
 
+	if (data.promotion && data.promotion !== '') {
+		features.push({ name: 'PROMOCIONES' });
+	}
+
+	if (data.discount >= 1) {
+		features.push({ name: 'OFERTAS' });
+	}
+
 	try {
 		const product = await prisma.product.create({
 			data: {
@@ -253,6 +261,14 @@ export async function PATCH(request: NextRequest) {
 				}),
 			}
 		: undefined;
+
+	if (data.promotion && data.promotion !== '') {
+		patchFeatures.push({ name: 'PROMOCIONES' });
+	}
+
+	if (data.discount && data.discount >= 1) {
+		patchFeatures.push({ name: 'OFERTAS' });
+	}
 
 	try {
 		const product = await prisma.product.update({
