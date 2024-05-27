@@ -12,7 +12,7 @@ $flowerCardImgSize: 160px;
 }
 
 .flowerCard img {
-	width: auto;
+	width: $flowerCardImgSize;
 	height: $flowerCardImgSize;
 }
 

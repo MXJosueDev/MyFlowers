@@ -34,7 +34,7 @@ model Decoration {
 model Product {
   id           Int          @id @default(autoincrement())
   price        Float
-  discount     Float        @default(-1) // USE -1 FOR NO DISCOUNT, REMOVE DEFAULT
+  discount     Float
   category     Category     @relation(fields: [categoryName], references: [name])
   categoryName Categories
   promotion    String?
@@ -86,6 +86,9 @@ enum Role {
 
 model User {
   id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
   role      Role     @default(ADMIN)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

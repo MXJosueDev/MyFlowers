@@ -19,7 +19,9 @@ export default function FavoritesContainer() {
 		/>
 	) : (
 		<Container className='my-5 text-center'>
-			<h5 className='display-6'>No has agregado ningun producto a favoritos aun.</h5>
+			<h5 className='display-6'>
+				No has agregado ningun producto a favoritos aun.
+			</h5>
 		</Container>
 	);
 }

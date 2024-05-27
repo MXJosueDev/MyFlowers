@@ -1,4 +1,6 @@
 import { Categories, Features, PrismaClient } from '@prisma/client';
+import { z } from 'zod';
+import bcrypt from 'bcrypt';
 
 const prisma: PrismaClient = new PrismaClient();
 
@@ -38,7 +40,7 @@ async function main() {
 		update: {},
 		create: {
 			name: 'Test Flower',
-			imageUrl: '/image/flower.png',
+			imageUrl: '/image/product.png',
 		},
 	});
 
@@ -57,7 +59,7 @@ async function main() {
 
 	console.log('Test Decoration registered', testDecoration);
 
-	const testProduct = await prisma.product.upsert({
+	const testflower = await prisma.product.upsert({
 		where: {
 			id: 1,
 		},
@@ -71,7 +73,7 @@ async function main() {
 				},
 			},
 			promotion: '',
-			imageUrl: '/image/product.png',
+			imageUrl: '/image/flower.png',
 			flowers: {
 				connect: {
 					name: 'Test flower',
@@ -85,7 +87,36 @@ async function main() {
 		},
 	});
 
-	console.log('Test Product registered', testProduct);
+	console.log('Test flower registered', testflower);
+
+	const rootUserSchema = z.object({
+		email: z.string().email(),
+		password: z.string().min(6),
+	});
+
+	const rootUserData = rootUserSchema.parse({
+		email: process.env.ROOT_EMAIL,
+		password: process.env.ROOT_PASSWORD,
+	});
+
+	const hashedPassword = await bcrypt.hash(rootUserData.password, 10);
+
+	await prisma.user.upsert({
+		where: {
+			username: 'root',
+		},
+		create: {
+			username: 'root',
+			email: rootUserData.email,
+			password: hashedPassword,
+			role: 'ROOT',
+		},
+		update: {
+			email: rootUserData.email,
+			password: hashedPassword,
+			role: 'ROOT',
+		},
+	});
 }
 
 main()
