@@ -15,7 +15,7 @@ export default function HomeTopOption({
 	optionIcon,
 }: Props) {
 	return (
-		<Link href={`/products?feature=${optionFeatureSearch}`}>
+		<Link href={`/products?features=${optionFeatureSearch}`}>
 			<button
 				type='button'
 				className={`btn btn-primary border-2 rounded-circle ctooltip ctooltip-hover ${styles.optionButton}`}

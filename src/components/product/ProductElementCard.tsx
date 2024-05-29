@@ -4,7 +4,10 @@ import styles from './Product.module.scss';
 
 interface Props extends IProductElement {}
 
-export default function ProductElementCard({ imageUrl, elementName }: Props) {
+export default function ProductElementCard({
+	imageUrl,
+	name: elementName,
+}: Props) {
 	return (
 		<div className={`card border-2 p-2 pe-none ${styles.productCard}`}>
 			<Image

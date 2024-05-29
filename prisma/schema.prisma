@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Flower {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  imageUrl  String
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Decoration {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  imageUrl  String
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id           Int          @id @default(autoincrement())
+  price        Float
+  discount     Float
+  category     Category     @relation(fields: [categoryName], references: [name])
+  categoryName Categories
+  promotion    String?
+  imageUrl     String
+  flowers      Flower[]
+  decorations  Decoration[]
+  features     Feature[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+enum Categories {
+  CUMPLEANOS
+  PAREJAS
+  CONDOLENCIAS
+  GRADUACION
+  DETALLES
+  BODAS
+  ANIVERSARIOS
+}
+
+model Category {
+  name      Categories @id
+  products  Product[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+enum Features {
+  HOME
+  MASVENDIDOS
+  OFERTAS
+  PROMOCIONES
+}
+
+model Feature {
+  name      Features  @id
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// USER & AUTH
+
+enum Role {
+  ROOT
+  ADMIN
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

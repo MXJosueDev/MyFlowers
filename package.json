@@ -2,9 +2,12 @@
 	"name": "myflowers",
 	"version": "0.1.0",
 	"private": true,
+	"prisma": {
+		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"}  prisma/seed.ts"
+	},
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
+		"build": "prisma generate && prisma migrate deploy && prisma db seed && next build",
 		"start": "next start",
 		"format-all": "prettier --write .",
 		"format-src": "prettier --write ./src",
@@ -12,7 +15,8 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@react-hook/window-size": "^3.1.1",
+		"@hookform/resolvers": "^3.4.2",
+		"@prisma/client": "^5.14.0",
 		"axios": "^1.6.8",
 		"bcrypt": "^5.1.1",
 		"bootstrap": "^5.3.3",
@@ -24,13 +28,15 @@
 		"react-hook-form": "^7.51.4",
 		"sass": "^1.76.0",
 		"usehooks-ts": "^3.1.0",
-		"zustand": "^4.5.2"
+		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.2.0",
+		"@types/bcrypt": "^5.0.2",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
+		"dotenv-cli": "^7.4.2",
 		"eslint": "^8.57.0",
 		"eslint-config-next": "14.2.3",
 		"eslint-config-prettier": "^9.1.0",
@@ -43,6 +49,7 @@
 		"prettier": "^3.2.5",
 		"pretty-quick": "^4.0.0",
 		"prisma": "^5.14.0",
+		"ts-node": "^10.9.2",
 		"typescript": "^5",
 		"typescript-eslint": "^7.8.0"
 	}

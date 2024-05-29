@@ -7,8 +7,6 @@ interface UseFavoritesReturn {
 }
 
 export default function useFavorites(): UseFavoritesReturn {
-	// TODO: Typing
-	// FIXME: Infinite calling
 	function serialize(value: string[]): string {
 		return value.join(',');
 	}

@@ -12,7 +12,6 @@ export default function AuthFormControl({
 	type,
 	placeholder,
 	options,
-	defaultValue,
 }: Props) {
 	return (
 		<div className='mb-2'>
@@ -25,7 +24,6 @@ export default function AuthFormControl({
 				type={type}
 				className={`form-control form-text focus-ring focus-ring-secondary border-2 ${styles.formControl} ${errors[name] && 'is-invalid'}`}
 				placeholder={placeholder}
-				defaultValue={defaultValue}
 				{...register(name, options)}
 			/>
 

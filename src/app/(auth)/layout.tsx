@@ -9,7 +9,7 @@ interface Props extends RequiredChildrenProp {}
 export default function AuthLayout({ children }: Props) {
 	return (
 		<div className='min-vh-100'>
-			<BackHeader title='Log-in' />
+			<BackHeader title='Autenticacion' />
 			<div id='content' className={`mt-5 mb-3 ${styles.container}`}>
 				<Container>
 					<Row className='justify-content-center'>
