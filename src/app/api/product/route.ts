@@ -4,7 +4,7 @@ import { Categories, Features, Prisma } from '@prisma/client';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { authOptions } from '../auth/[...nextauth]/route';
+import { authOptions } from '../auth/[...nextauth]/authOptions';
 
 const GetData = z.object({
 	productId: z.number().min(1),

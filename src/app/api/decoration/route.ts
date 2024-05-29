@@ -3,7 +3,7 @@ import { dataJsonDeserializer, isValidImageURL } from '@/utils/Utils';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { authOptions } from '../auth/[...nextauth]/route';
+import { authOptions } from '../auth/[...nextauth]/authOptions';
 
 const GetData = z.object({
 	decorationId: z.number().min(1),
