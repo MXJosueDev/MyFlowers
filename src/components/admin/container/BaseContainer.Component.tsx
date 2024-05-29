@@ -75,6 +75,7 @@ export default function BaseContainer({
 											url={`${baseUrl}/${stringId}`}
 										>
 											<FlowerCard
+												discount={isome.discount}
 												category={isome.categoryName}
 												productId={stringId}
 												img={isome.imageUrl}
