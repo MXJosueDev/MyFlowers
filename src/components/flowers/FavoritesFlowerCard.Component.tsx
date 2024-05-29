@@ -11,8 +11,8 @@ export default function FavoritesFlowerCard({
 	productId,
 	img,
 	price,
+	discount,
 }: FlowerCardProps) {
-	// TODO: Product redirect
 	return (
 		<div
 			className={`card border-2 p-2 rounded shadow ${styles.flowerCard}`}
@@ -31,7 +31,15 @@ export default function FavoritesFlowerCard({
 									<p
 										className={`mb-0 fs-3 ${OpenSans.className}`}
 									>
-										{`$${price}`}
+										<span
+											className={`${discount > 0 ? 'text-decoration-line-through opacity-75' : ''}`}
+										>
+											{`$${price}`}
+										</span>
+
+										{discount > 0 && (
+											<span className='ms-1 text-decoration-none'>{`$${discount}`}</span>
+										)}
 									</p>
 
 									<AddFavoriteButton productId={productId} />

@@ -5,7 +5,7 @@ import FlowersContainer from '@/components/flowers/FlowersContainer.Component';
 import HomeTop from '@/components/home/HomeTop.Component';
 import SidebarNav from '@/components/sidebar/SidebarNav.Component';
 import { useState } from 'react';
-import styles from './Home.module.scss';
+import styles from '@/styles/sidebar.module.scss';
 import Footer from '@/components/footer/Footer.Component';
 
 export default function Home() {

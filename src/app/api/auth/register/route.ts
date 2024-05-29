@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
 			{ error },
 			{
 				status: 500,
-				statusText: 'Ocurrio un error al intentar obtener el producto',
+				statusText: 'Ocurrio un error al intentar hacer el registro',
 			},
 		);
 	}

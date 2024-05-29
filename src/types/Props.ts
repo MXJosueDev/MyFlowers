@@ -23,6 +23,7 @@ export interface FlowerCardProps {
 	category: string;
 	img: string;
 	price: number;
+	discount: number;
 }
 
 export interface ISidebarState {
@@ -30,7 +31,6 @@ export interface ISidebarState {
 	setSidebarToggled: SetState<boolean>;
 }
 
-// TODO: Correct typing
 export interface FormControlProps {
 	register: UseFormRegister<any>;
 	errors: FieldErrors;
@@ -39,10 +39,15 @@ export interface FormControlProps {
 	type: HTMLInputTypeAttribute;
 	placeholder: string;
 	options?: RegisterOptions;
-	defaultValue?: string;
+	formText?: ReactNode;
+	inputText?: string;
 }
 
 export interface IProductElement {
 	imageUrl: string;
 	name: string;
+}
+
+export interface IDashboardProductElement extends IProductElement {
+	id: string;
 }

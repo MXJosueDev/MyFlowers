@@ -35,7 +35,7 @@ export default function LoginForm() {
 	getSession()
 		.then(session => {
 			if (session !== null) {
-				// router.push('/dashboard');
+				router.push('/dashboard');
 			}
 		})
 		.catch();

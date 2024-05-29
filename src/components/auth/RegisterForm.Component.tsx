@@ -9,6 +9,7 @@ import { useState } from 'react';
 import styles from './Auth.module.scss';
 import axios, { AxiosError } from 'axios';
 import { API_URI } from '@/utils/Utils';
+import { useRouter } from 'next/navigation';
 
 const schema = z.object({
 	username: z
@@ -38,6 +39,8 @@ export default function RegisterForm() {
 		shouldUseNativeValidation: false,
 	});
 
+	const router = useRouter();
+
 	const [authError, setAuthError] = useState<string>();
 
 	const onSubmit = handleSubmit(async data => {
@@ -46,8 +49,10 @@ export default function RegisterForm() {
 				...data,
 			});
 
-			if (res.status !== 200) {
+			if (res.status === 200) {
 				alert('!El usuario se registró con exito!');
+
+				router.push('/dashboard');
 			}
 		} catch (error) {
 			if (error instanceof AxiosError) {

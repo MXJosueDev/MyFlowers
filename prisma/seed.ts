@@ -40,7 +40,7 @@ async function main() {
 		update: {},
 		create: {
 			name: 'Test Flower',
-			imageUrl: '/image/product.png',
+			imageUrl: '/image/flower.png',
 		},
 	});
 

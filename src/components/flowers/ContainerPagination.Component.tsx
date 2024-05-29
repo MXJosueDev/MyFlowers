@@ -2,20 +2,18 @@ import { SetState } from '@/types/Types';
 import React, { MouseEvent } from 'react';
 
 interface Props {
-	results: number;
 	page: number;
 	setPage: SetState<number>;
-	pageSize: number;
+	nextPage: boolean;
 }
 
 export default function ContainerPagination({
-	results,
 	page,
 	setPage,
-	pageSize,
+	nextPage: hasNextPage,
 }: Props) {
 	function prevPage(event: MouseEvent<HTMLAnchorElement>) {
-		if (page >= 1) {
+		if (page > 1) {
 			setPage(page - 1);
 			return;
 		}
@@ -25,7 +23,7 @@ export default function ContainerPagination({
 	}
 
 	function nextPage(event: MouseEvent<HTMLAnchorElement>) {
-		if (pageSize <= results) {
+		if (hasNextPage) {
 			setPage(page + 1);
 			return;
 		}

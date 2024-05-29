@@ -87,7 +87,7 @@ export async function GET(request: NextRequest) {
 	try {
 		const products = await prisma.product.findMany({
 			skip: data.pageSize * (data.page - 1),
-			take: data.pageSize,
+			take: data.pageSize + 1,
 			where: {
 				OR: getIds,
 				price: { gte: data.minPrice, lte: data.maxPrice },
@@ -132,8 +132,14 @@ export async function GET(request: NextRequest) {
 			},
 		});
 
+		let nextPage = false;
+		if (products.length > pageSize) {
+			nextPage = true;
+			products.pop();
+		}
+
 		return NextResponse.json(
-			{ results: products.length, products },
+			{ results: products.length, nextPage, products },
 			{ status: 200 },
 		);
 	} catch (error) {

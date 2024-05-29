@@ -1,0 +1,30 @@
+$containerHeight: 32px;
+$searchbarIconHeight: 18px;
+
+.searchbarInput,
+.searchbarButton {
+	background-color: transparent;
+	border: none;
+}
+
+.searchbarInput {
+	outline: none;
+}
+
+.searchbarButton::before {
+	content: '';
+	display: block;
+	border-left: 1px solid var(--bs-dark);
+	position: absolute;
+	height: $containerHeight; /* Another way for set auto-height */
+	opacity: 0.25;
+}
+
+.searchbarIcon::before {
+	font-size: $searchbarIconHeight;
+	line-height: $containerHeight;
+}
+
+.searchbarInput:focus-visible {
+	border: 0; /* ???? */
+}

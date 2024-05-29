@@ -13,6 +13,7 @@ import ContainerPagination from './ContainerPagination.Component';
 
 export const BREAKPOINTS = {
 	HOME: 'row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4',
+	ELEMENT: 'row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4',
 	FAVORITES: 'row-cols-1 row-cols-lg-2',
 };
 
@@ -37,13 +38,15 @@ export default function FlowersContainer({
 	const [status, setStatus] = useState<ComponentStatus>('LOADING');
 	const [flowers, setFlowers] = useState<any[]>();
 
-	const [results, setResults] = useState<number>(0);
 	const [page, setPage] = useState<number>(1);
 	const [pageSize] = useState<number>(16);
+	const [nextPage, setNextPage] = useState<boolean>(false);
 
 	useEffect(() => {
-		async function fetchFlowers() {
+		async function fetchData() {
 			try {
+				setNextPage(false);
+
 				const res = await axios
 					.get(`${API_URI}/products/`, {
 						params: { page, pageSize, ...fetchParams },
@@ -57,7 +60,7 @@ export default function FlowersContainer({
 				}
 
 				const data = res.data;
-				setResults(data.results);
+				setNextPage(data.nextPage);
 				const productsData = data.products as any[];
 
 				setFlowers(productsData);
@@ -69,8 +72,10 @@ export default function FlowersContainer({
 			}
 		}
 
-		fetchFlowers();
+		fetchData();
 	}, [fetchParams, page, pageSize]);
+
+	console.log(flowers);
 
 	return (
 		<Container id='results' className='my-5'>
@@ -110,6 +115,7 @@ export default function FlowersContainer({
 												productId={stringId}
 												img={flower.imageUrl}
 												price={flower.price}
+												discount={flower.discount}
 											/>
 										</FlowerRedirector>
 									</div>
@@ -117,10 +123,9 @@ export default function FlowersContainer({
 							})}
 						</Row>
 						<ContainerPagination
-							results={results}
 							page={page}
 							setPage={setPage}
-							pageSize={pageSize}
+							nextPage={nextPage}
 						/>
 					</>
 				) : (

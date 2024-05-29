@@ -7,7 +7,7 @@ export function joinClassNames(
 	...classNames: Array<string | undefined>
 ): string {
 	return classNames.join(' ');
-} /* TODO: Remove */
+} /* TODO: Remove ??? */
 
 export async function dataJsonDeserializer(
 	request: NextRequest,
@@ -28,7 +28,10 @@ export async function isValidImageURL(url: string): Promise<boolean> {
 	try {
 		const response = await axios.head(url);
 		const contentType = response.headers['content-type'];
-		return contentType && contentType.startsWith('image/');
+
+		return (
+			typeof contentType === 'string' && contentType.startsWith('image/')
+		);
 	} catch (error) {
 		return false;
 	}

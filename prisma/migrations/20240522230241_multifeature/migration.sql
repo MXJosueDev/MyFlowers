@@ -5,10 +5,10 @@
 
 */
 -- DropForeignKey
-ALTER TABLE `product` DROP FOREIGN KEY `Product_featureName_fkey`;
+ALTER TABLE `Product` DROP FOREIGN KEY `Product_featureName_fkey`;
 
 -- AlterTable
-ALTER TABLE `product` DROP COLUMN `featureName`;
+ALTER TABLE `Product` DROP COLUMN `featureName`;
 
 -- CreateTable
 CREATE TABLE `_FeatureToProduct` (

@@ -91,9 +91,20 @@ export default function ProductContent({ productId }: Props) {
 										productId={productId}
 										category={flower.categoryName}
 										price={flower.price}
+										discount={flower.discount}
 									/>
 								</div>
 							</Row>
+
+							{flower.promotion && (
+								<Row className='justify-content-center mb-2'>
+									<div className='col-10 text-center'>
+										<h5>¡Promocion!</h5>
+										<p>{flower.promotion}</p>
+									</div>
+								</Row>
+							)}
+
 							<ProductElements
 								elementTitle='Flores utilizadas'
 								productElements={flower.flowers}

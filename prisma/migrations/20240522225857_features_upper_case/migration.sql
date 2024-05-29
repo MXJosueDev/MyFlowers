@@ -7,15 +7,15 @@
 
 */
 -- DropForeignKey
-ALTER TABLE `product` DROP FOREIGN KEY `Product_featureName_fkey`;
+ALTER TABLE `Product` DROP FOREIGN KEY `Product_featureName_fkey`;
 
 -- AlterTable
-ALTER TABLE `feature` DROP PRIMARY KEY,
+ALTER TABLE `Feature` DROP PRIMARY KEY,
     MODIFY `name` ENUM('HOME', 'MASVENDIDOS', 'OFERTAS', 'PROMOCIONES') NOT NULL,
     ADD PRIMARY KEY (`name`);
 
 -- AlterTable
-ALTER TABLE `product` MODIFY `featureName` ENUM('HOME', 'MASVENDIDOS', 'OFERTAS', 'PROMOCIONES') NOT NULL;
+ALTER TABLE `Product` MODIFY `featureName` ENUM('HOME', 'MASVENDIDOS', 'OFERTAS', 'PROMOCIONES') NOT NULL;
 
 -- AddForeignKey
 ALTER TABLE `Product` ADD CONSTRAINT `Product_featureName_fkey` FOREIGN KEY (`featureName`) REFERENCES `Feature`(`name`) ON DELETE RESTRICT ON UPDATE CASCADE;
